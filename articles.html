@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Archive — Archer Chain Analytics</title>
+    <style>
+        :root {
+            --bg-primary: #11161d;
+            --bg-secondary: #161e29;
+            --accent-primary: #dcae3f;
+            --accent-secondary: #7e8f9f;
+            --text-primary: #cfd6dd;
+            --highlight: #ffd166;
+            --border: #242f3e;
+            --border-opacity: 0.5;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Courier New', 'Fira Code', monospace; line-height: 1.6; font-size: 0.9rem; letter-spacing: 0.5px; }
+        .meta-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); font-size: 0.7rem; letter-spacing: 1px; color: var(--accent-secondary); background-color: var(--bg-secondary); }
+        .meta-header .center-title { color: var(--text-primary); font-weight: 600; letter-spacing: 2px; }
+        .nav-container { display: flex; justify-content: center; gap: 48px; padding: 18px 0; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-item { color: var(--text-primary); text-decoration: none; cursor: pointer; transition: color 0.2s ease; position: relative; display: flex; align-items: center; gap: 6px; }
+        .nav-item::before { content: '▸'; color: var(--accent-primary); font-size: 0.6rem; opacity: 0; transition: opacity 0.2s ease; }
+        .nav-item:hover { color: var(--accent-primary); }
+        .nav-item:hover::before { opacity: 1; }
+        .nav-item.active { color: var(--accent-primary); }
+        .nav-item.active::before { opacity: 1; }
+        .page-header { text-align: center; padding: 60px 24px 40px 24px; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); }
+        .page-title { font-size: 3rem; letter-spacing: 3px; color: var(--accent-primary); text-transform: uppercase; font-weight: 700; margin-bottom: 16px; }
+        .page-subtitle { font-size: 0.9rem; letter-spacing: 1.5px; color: var(--accent-secondary); text-transform: uppercase; margin-bottom: 20px; }
+        .content-grid { max-width: 1000px; margin: 0 auto; padding: 0 24px 60px 24px; }
+        .archive-entry { margin-top: 32px; padding: 30px; background-color: var(--bg-secondary); border: 1px solid rgba(36, 47, 62, var(--border-opacity)); transition: border-color 0.2s ease; }
+        .archive-entry:hover { border-color: var(--accent-primary); }
+        .entry-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+        .desk-tag { display: inline-block; border: 1px solid var(--accent-primary); color: var(--accent-primary); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; padding: 4px 10px; }
+        .desk-tag.money-truth { border-color: var(--highlight); color: var(--highlight); }
+        .entry-date { color: var(--accent-secondary); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
+        .entry-title { color: var(--text-primary); font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
+        .entry-excerpt { color: var(--text-primary); font-size: 0.85rem; line-height: 1.7; margin-bottom: 20px; }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background-color: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--accent-primary); padding: 12px 24px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s ease; font-family: 'Courier New', 'Fira Code', monospace; font-weight: 600; }
+        .cta-button::before { content: '▸'; color: var(--accent-primary); font-size: 0.6rem; }
+        .cta-button:hover { background-color: var(--accent-primary); color: var(--bg-primary); border-color: var(--accent-primary); }
+        .archive-note { margin-top: 40px; padding: 24px; border: 1px dashed rgba(36, 47, 62, var(--border-opacity)); text-align: center; color: var(--accent-secondary); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+        .footer { margin-top: 80px; padding: 40px 24px; border-top: 1px solid rgba(36, 47, 62, var(--border-opacity)); background-color: var(--bg-secondary); text-align: center; }
+        .footer-contact { margin-bottom: 20px; }
+        .footer-email { color: var(--accent-primary); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; transition: color 0.2s ease; }
+        .footer-email:hover { color: var(--highlight); }
+        .footer-meta { color: var(--accent-secondary); font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
+        @media (max-width: 768px) { .page-title { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <div class="meta-header">
+        <div>BIN 754975035</div>
+        <div class="center-title">ARCHER CHAIN ANALYTICS</div>
+        <div>GST/HST 754975035RT0001</div>
+    </div>
+
+    <div class="nav-container">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="articles.html" class="nav-item active">Articles</a>
+        <a class="nav-item">Products <span>▾</span></a>
+        <a class="nav-item">Services <span>▾</span></a>
+        <a class="nav-item">Alētheia™ Array <span>▾</span></a>
+    </div>
+
+    <div class="page-header">
+        <h1 class="page-title">Article Archive</h1>
+        <p class="page-subtitle">Dispatches from the Regulatory Desk &amp; the Money Truth Desk</p>
+    </div>
+
+    <div class="content-grid">
+        <div class="archive-entry">
+            <div class="entry-meta">
+                <span class="desk-tag">Regulatory Desk</span>
+                <span class="entry-date">2026-10-14 // Pilot Issue #1</span>
+            </div>
+            <div class="entry-title">The Other Half of the Puzzle Just Dropped</div>
+            <div class="entry-excerpt">The CFTC published its crypto market-structure advance notice &mdash; the companion to the SEC&rsquo;s capital-formation half. Four federal comment windows are open at once, and tokenized equities just crossed from filings to live product.</div>
+            <a href="article.html" class="cta-button">Read Dispatch</a>
+        </div>
+
+        <div class="archive-note">
+            Weekly Regulatory Brief &mdash; new dispatch every Monday
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-contact">
+            <a href="mailto:sales@archerchainanalytics.com" class="footer-email">SALES@ARCHERCHAINANALYTICS.COM</a>
+        </div>
+        <div class="footer-meta">SOVEREIGNTY // INTEGRITY // INEXORABILIS &copy; 2026 ALL RIGHTS RESERVED</div>
+    </div>
+</body>
+</html>

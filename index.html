@@ -1,4 +1,475 @@
-<!doctype html>
-<meta charset="utf-8">
-<title>Archer Chain Analytics</title>
-<h1>Archer Chain Analytics</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archer Chain Analytics | Sovereign Systems &amp; Financial Intelligence</title>
+    <style>
+        :root {
+            --bg-primary: #060606;
+            --bg-secondary: #0e0e10;
+            --accent-primary: #dcae3f;
+            --accent-secondary: #7e8f9f;
+            --text-primary: #cfd6dd;
+            --highlight: #ffd166;
+            --border: #2b2b30;
+            --border-opacity: 0.5;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Courier New', 'Fira Code', monospace;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+        .meta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 24px;
+            border-bottom: 1px solid rgba(43, 43, 48, var(--border-opacity));
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--accent-secondary);
+            background-color: var(--bg-secondary);
+        }
+        .meta-header .center-title {
+            color: var(--text-primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid rgba(43, 43, 48, var(--border-opacity));
+            padding: 14px 0;
+        }
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 60s linear infinite;
+        }
+        .ticker-item {
+            display: inline-block;
+            padding: 0 18px;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+        .ticker-item .symbol {
+            color: var(--highlight);
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .ticker-item .price {
+            color: var(--text-primary);
+            margin: 0 6px;
+        }
+        .ticker-item .change { font-weight: 500; }
+        .ticker-item .change.up { color: #4ade80; }
+        .ticker-item .change.down { color: #f87171; }
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(43, 43, 48, var(--border-opacity));
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .nav-item {
+            color: var(--text-primary);
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-item::before {
+            content: '▸';
+            color: var(--accent-primary);
+            font-size: 0.6rem;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        .nav-item:hover { color: var(--accent-primary); }
+        .nav-item:hover::before { opacity: 1; }
+        .brand-section {
+            text-align: center;
+            padding: 90px 24px 50px 24px;
+            border-bottom: 1px solid rgba(43, 43, 48, var(--border-opacity));
+        }
+        .brand-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 3rem;
+            letter-spacing: 8px;
+            color: var(--accent-primary);
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .brand-subtitle {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--accent-secondary);
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        .hero-statement {
+            max-width: 900px;
+            margin: 0 auto 70px auto;
+            padding: 0 24px;
+            text-align: center;
+        }
+        .hero-text {
+            color: var(--text-primary);
+            font-size: 1rem;
+            line-height: 1.8;
+            letter-spacing: 0.3px;
+            margin-bottom: 24px;
+        }
+        .hero-text strong {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+        .content-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px 60px 24px;
+        }
+        .grid-section {
+            margin-bottom: 48px;
+            padding: 30px;
+            background-color: var(--bg-secondary);
+            border: 1px solid rgba(43, 43, 48, var(--border-opacity));
+        }
+        .grid-section.featured {
+            border-color: var(--accent-primary);
+        }
+        .grid-section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .grid-section-marker {
+            color: var(--accent-primary);
+            font-size: 1.2rem;
+            line-height: 1;
+            margin-top: 2px;
+        }
+        .grid-section-title {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .grid-section-content { margin-left: 22px; }
+        .grid-section-content p {
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
+        }
+        .grid-section-content p:last-child { margin-bottom: 0; }
+        .desk-tag {
+            display: inline-block;
+            border: 1px solid var(--accent-primary);
+            color: var(--accent-primary);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            margin-bottom: 12px;
+        }
+        .desk-tag.money-truth {
+            border-color: var(--highlight);
+            color: var(--highlight);
+        }
+        .article-title {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 400;
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .article-meta {
+            color: var(--accent-secondary);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .desk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .desk-card {
+            background-color: var(--bg-primary);
+            border: 1px solid rgba(43, 43, 48, var(--border-opacity));
+            padding: 24px;
+        }
+        .desk-card h3 {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .desk-card p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-primary);
+            padding: 14px 28px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        .cta-button::before {
+            content: '▸';
+            color: var(--accent-primary);
+            font-size: 0.6rem;
+        }
+        .cta-button:hover {
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+            border-color: var(--accent-primary);
+        }
+        .footer {
+            margin-top: 80px;
+            padding: 40px 24px;
+            border-top: 1px solid rgba(43, 43, 48, var(--border-opacity));
+            background-color: var(--bg-secondary);
+            text-align: center;
+        }
+        .footer-contact { margin-bottom: 20px; }
+        .footer-email {
+            color: var(--accent-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .footer-email:hover { color: var(--highlight); }
+        .footer-meta {
+            color: var(--accent-secondary);
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        @media (max-width: 768px) {
+            .brand-title { font-size: 2.2rem; letter-spacing: 4px; }
+            .nav-container { gap: 24px; font-size: 0.7rem; }
+            .grid-section { padding: 20px; }
+            .desk-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="meta-header">
+        <div>BIN 754975035</div>
+        <div class="center-title">ARCHER CHAIN ANALYTICS</div>
+        <div>GST/HST 754975035RT0001</div>
+    </div>
+
+    <div class="ticker-wrap">
+        <div class="ticker" id="price-ticker">
+            <div class="ticker-item"><span class="symbol">LOADING</span><span class="price">—</span></div>
+        </div>
+    </div>
+
+    <div class="nav-container">
+        <a class="nav-item" href="#dispatch">Dispatch</a>
+        <a class="nav-item" href="articles.html">Archive</a>
+        <a class="nav-item" href="#desks">Desks</a>
+        <a class="nav-item" href="#mission">Mission</a>
+    </div>
+
+    <div class="brand-section">
+        <h1 class="brand-title">Archer Chain Analytics</h1>
+        <p class="brand-subtitle">Powering a 1,674-chain blockchain mesh</p>
+    </div>
+
+    <div class="hero-statement">
+        <p class="hero-text">
+            Sovereign blockchain infrastructure, built and operated by Archer Chain Analytics. The Al&emacr;theia Array&trade; &mdash; <strong>1,674 blockchain listeners</strong> &mdash; is available for enterprise deployment now. Listener deployments from a few thousand dollars. When the infrastructure sells, everything else follows.
+        </p>
+        <a href="#products" class="cta-button">View Products</a>
+    </div>
+
+    <div class="content-grid" id="products">
+
+        <div class="grid-section featured">
+            <div class="grid-section-header">
+                <div class="grid-section-marker">●</div>
+                <div class="grid-section-title">Flagship // For Sale Now</div>
+            </div>
+            <div class="grid-section-content">
+                <div class="article-title">Al&emacr;theia Array&trade; Listeners</div>
+                <div class="article-meta">1,674-Chain Blockchain Listener Network</div>
+                <p>Deploy your own sovereign blockchain listeners on the mesh Archer Chain Analytics powers. Enterprise-grade, zero-trust, institutional SLAs. Listener deployments from a few thousand dollars.</p>
+                <a href="mailto:sales@archerchainanalytics.com?subject=Al%C4%93theia%20Array%20Listener%20Inquiry" class="cta-button">Inquire to Buy</a>
+            </div>
+        </div>
+
+        <div class="grid-section">
+            <div class="grid-section-header">
+                <div class="grid-section-marker">●</div>
+                <div class="grid-section-title">More Products</div>
+            </div>
+            <div class="grid-section-content">
+                <div class="desk-grid">
+                    <div class="desk-card">
+                        <h3>US Expansion Toolkit</h3>
+                        <p>The written compliance playbook for Canadian founders entering US markets. <strong>$197 USD.</strong></p>
+                    </div>
+                    <div class="desk-card">
+                        <div class="desk-tag">Regulatory Desk</div>
+                        <h3>Weekly Regulatory Brief</h3>
+                        <p>Every Monday: what moved, what it means, your checklist. Verified against the primary source.</p>
+                    </div>
+                </div>
+                <a href="mailto:sales@archerchainanalytics.com?subject=Product%20Inquiry" class="cta-button">Contact Sales</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="content-grid">
+
+        <div class="grid-section featured" id="dispatch">
+            <div class="grid-section-header">
+                <div class="grid-section-marker">●</div>
+                <div class="grid-section-title">Latest Dispatch</div>
+            </div>
+            <div class="grid-section-content">
+                <div class="desk-tag">Regulatory Desk</div>
+                <div class="article-title">The Other Half of the Puzzle Just Dropped</div>
+                <div class="article-meta">Week of October 12&ndash;14, 2026 &nbsp;//&nbsp; Pilot Issue #1</div>
+                <p>The CFTC published its crypto market-structure advance notice &mdash; the companion to the SEC&rsquo;s capital-formation half. Four federal comment windows are open at once, and tokenized equities just crossed from filings to live product. What moved, what it means, and your Monday-morning checklist.</p>
+                <a href="article.html" class="cta-button">Read Dispatch</a>
+            </div>
+        </div>
+
+        <div class="grid-section" id="desks">
+            <div class="grid-section-header">
+                <div class="grid-section-marker">●</div>
+                <div class="grid-section-title">Two Desks</div>
+            </div>
+            <div class="grid-section-content">
+                <div class="desk-grid">
+                    <div class="desk-card">
+                        <div class="desk-tag">Regulatory Desk</div>
+                        <h3>Crypto Regulation, Translated</h3>
+                        <p>Every week: what moved in federal crypto regulation, what it means for builders, and a Monday-morning checklist. Federal Register, SEC, CFTC, Treasury &mdash; read so you don&rsquo;t have to. Every claim verified against the primary source.</p>
+                    </div>
+                    <div class="desk-card">
+                        <div class="desk-tag money-truth">Money Truth Desk</div>
+                        <h3>How Money Actually Works</h3>
+                        <p>How wealthy families preserve capital. Money as a tool, not a trap. Living life insurance, bank-on-yourself mechanics, and the banking narratives that don&rsquo;t survive contact with the primary source. For working families.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-section" id="mission">
+            <div class="grid-section-header">
+                <div class="grid-section-marker">●</div>
+                <div class="grid-section-title">Mission</div>
+            </div>
+            <div class="grid-section-content">
+                <p>Financial truth for working families. Money is a tool &mdash; not something to be spent frivolously, and not something to be lied about. Everything published here is checked against the source document before it reaches you. If a claim can&rsquo;t show its receipts, it doesn&rsquo;t ship.</p>
+                <p>Archer Chain Analytics builds sovereign blockchain infrastructure &mdash; a 1,674-chain listener network, forensic watermarking, and the sales rail everything runs on. The publication is the other half: the knowledge, free, every week.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <div class="footer-contact">
+            <a href="mailto:sales@archerchainanalytics.com" class="footer-email">SALES@ARCHERCHAINANALYTICS.COM</a>
+        </div>
+        <div class="footer-meta">SOVEREIGNTY // INTEGRITY // INEXORABILIS &copy; 2026 ALL RIGHTS RESERVED</div>
+    </div>
+
+    <script>
+    (function() {
+        var coins = [
+            {id:'bitcoin', sym:'BTC'}, {id:'ethereum', sym:'ETH'},
+            {id:'solana', sym:'SOL'}, {id:'ripple', sym:'XRP'},
+            {id:'binancecoin', sym:'BNB'}, {id:'cardano', sym:'ADA'},
+            {id:'avalanche-2', sym:'AVAX'}, {id:'polkadot', sym:'DOT'},
+            {id:'chainlink', sym:'LINK'}, {id:'uniswap', sym:'UNI'},
+            {id:'aave', sym:'AAVE'}, {id:'monero', sym:'XMR'},
+            {id:'zcash', sym:'ZEC'}, {id:'bitcoin-cash', sym:'BCH'},
+            {id:'dogecoin', sym:'DOGE'}, {id:'tron', sym:'TRX'},
+            {id:'toncoin', sym:'TON'}, {id:'near', sym:'NEAR'},
+            {id:'arbitrum', sym:'ARB'}, {id:'optimism', sym:'OP'},
+            {id:'polygon', sym:'POL'}, {id:'cosmos', sym:'ATOM'},
+            {id:'litecoin', sym:'LTC'}, {id:'stellar', sym:'XLM'}
+        ];
+        function fmt(p) {
+            if (p >= 1000) return '$' + p.toLocaleString('en-US', {maximumFractionDigits: 0});
+            if (p >= 10) return '$' + p.toFixed(2);
+            return '$' + p.toFixed(3);
+        }
+        function render(data) {
+            var html = '';
+            coins.forEach(function(c) {
+                var d = data[c.id];
+                if (!d) return;
+                var chg = d.usd_24h_change || 0;
+                var cls = chg >= 0 ? 'up' : 'down';
+                var arrow = chg >= 0 ? '▲' : '▼';
+                html += '<div class="ticker-item"><span class="symbol">' + c.sym + '</span>' +
+                        '<span class="price">' + fmt(d.usd) + '</span>' +
+                        '<span class="change ' + cls + '">' + arrow + ' ' + Math.abs(chg).toFixed(2) + '%</span></div>';
+            });
+            if (html) {
+                document.getElementById('price-ticker').innerHTML = html + html;
+            }
+        }
+        var ids = coins.map(function(c){return c.id;}).join(',');
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=' + ids + '&vs_currencies=usd&include_24h_change=true')
+            .then(function(r){ return r.json(); })
+            .then(render)
+            .catch(function(){
+                document.getElementById('price-ticker').innerHTML =
+                    '<div class="ticker-item"><span class="symbol">BTC</span><span class="price">$65,994</span></div>' +
+                    '<div class="ticker-item"><span class="symbol">ETH</span><span class="price">$1,777</span></div>' +
+                    '<div class="ticker-item"><span class="symbol">SOL</span><span class="price">$73.45</span></div>';
+            });
+    })();
+    </script>
+
+</body>
+</html>

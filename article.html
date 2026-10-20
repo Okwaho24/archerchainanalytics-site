@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Other Half of the Puzzle Just Dropped — Archer Chain Analytics</title>
+    <style>
+        :root {
+            --bg-primary: #11161d;
+            --bg-secondary: #161e29;
+            --accent-primary: #dcae3f;
+            --accent-secondary: #7e8f9f;
+            --text-primary: #cfd6dd;
+            --highlight: #ffd166;
+            --border: #242f3e;
+            --border-opacity: 0.5;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Courier New', 'Fira Code', monospace; line-height: 1.6; font-size: 0.9rem; letter-spacing: 0.5px; }
+        .meta-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); font-size: 0.7rem; letter-spacing: 1px; color: var(--accent-secondary); background-color: var(--bg-secondary); }
+        .meta-header .center-title { color: var(--text-primary); font-weight: 600; letter-spacing: 2px; }
+        .nav-container { display: flex; justify-content: center; gap: 48px; padding: 18px 0; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
+        .nav-item { color: var(--text-primary); text-decoration: none; cursor: pointer; transition: color 0.2s ease; position: relative; display: flex; align-items: center; gap: 6px; }
+        .nav-item::before { content: '▸'; color: var(--accent-primary); font-size: 0.6rem; opacity: 0; transition: opacity 0.2s ease; }
+        .nav-item:hover { color: var(--accent-primary); }
+        .nav-item:hover::before { opacity: 1; }
+        .nav-item.active { color: var(--accent-primary); }
+        .nav-item.active::before { opacity: 1; }
+        .page-header { text-align: center; padding: 60px 24px 40px 24px; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); }
+        .desk-tag { display: inline-block; border: 1px solid var(--accent-primary); color: var(--accent-primary); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; padding: 6px 14px; margin-bottom: 20px; }
+        .desk-tag.money-truth { border-color: var(--highlight); color: var(--highlight); }
+        .page-title { font-size: 2.6rem; letter-spacing: 2px; color: var(--text-primary); text-transform: uppercase; font-weight: 700; margin-bottom: 16px; line-height: 1.3; max-width: 900px; margin-left: auto; margin-right: auto; }
+        .page-subtitle { font-size: 0.85rem; letter-spacing: 1.5px; color: var(--accent-secondary); text-transform: uppercase; margin-bottom: 8px; }
+        .content-grid { max-width: 860px; margin: 0 auto; padding: 0 24px 60px 24px; }
+        .article-body { margin-top: 48px; }
+        .article-body p { color: var(--text-primary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 18px; letter-spacing: 0.3px; }
+        .article-body h2 { color: var(--accent-primary); font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 40px 0 18px 0; padding-bottom: 8px; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); }
+        .article-body ul { margin: 0 0 18px 0; padding: 0; list-style: none; }
+        .article-body ul li { color: var(--text-primary); font-size: 0.9rem; line-height: 1.7; margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .article-body ul li::before { content: '▸'; color: var(--accent-primary); position: absolute; left: 0; }
+        .article-body ul li strong { color: var(--highlight); }
+        .article-body em { color: var(--accent-secondary); }
+        .disclaimer-box { margin-top: 48px; padding: 24px; background-color: var(--bg-secondary); border: 1px solid rgba(36, 47, 62, var(--border-opacity)); border-left: 3px solid var(--accent-primary); }
+        .disclaimer-box p { color: var(--accent-secondary); font-size: 0.8rem; line-height: 1.7; margin-bottom: 10px; }
+        .disclaimer-box p:last-child { margin-bottom: 0; }
+        .article-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 40px; flex-wrap: wrap; gap: 16px; }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background-color: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--accent-primary); padding: 14px 28px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s ease; font-family: 'Courier New', 'Fira Code', monospace; font-weight: 600; }
+        .cta-button::before { content: '▸'; color: var(--accent-primary); font-size: 0.6rem; }
+        .cta-button:hover { background-color: var(--accent-primary); color: var(--bg-primary); border-color: var(--accent-primary); }
+        .footer { margin-top: 80px; padding: 40px 24px; border-top: 1px solid rgba(36, 47, 62, var(--border-opacity)); background-color: var(--bg-secondary); text-align: center; }
+        .footer-contact { margin-bottom: 20px; }
+        .footer-email { color: var(--accent-primary); text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; transition: color 0.2s ease; }
+        .footer-email:hover { color: var(--highlight); }
+        .footer-meta { color: var(--accent-secondary); font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
+        @media (max-width: 768px) { .page-title { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+    <div class="meta-header">
+        <div>BIN 754975035</div>
+        <div class="center-title">ARCHER CHAIN ANALYTICS</div>
+        <div>GST/HST 754975035RT0001</div>
+    </div>
+
+    <div class="nav-container">
+        <a href="index.html" class="nav-item">Home</a>
+        <a href="articles.html" class="nav-item active">Articles</a>
+        <a class="nav-item">Products <span>▾</span></a>
+        <a class="nav-item">Services <span>▾</span></a>
+        <a class="nav-item">Alētheia™ Array <span>▾</span></a>
+    </div>
+
+    <div class="page-header">
+        <div class="desk-tag">Regulatory Desk</div>
+        <h1 class="page-title">The Other Half of the Puzzle Just Dropped</h1>
+        <p class="page-subtitle">Week of October 12&ndash;14, 2026 &nbsp;//&nbsp; Weekly Regulatory Brief &mdash; Pilot Issue #1</p>
+    </div>
+
+    <div class="content-grid">
+        <div class="article-body">
+            <p>For months, American crypto regulation has been a one-handed story. The SEC has been writing the capital-formation half &mdash; how you raise money, what you disclose, who can buy. This week, the other hand finally moved.</p>
+
+            <p>On Tuesday, the Commodity Futures Trading Commission published a 30-page advance notice on crypto market structure (FR Doc 2026-20888). It has an ungainly name &mdash; <em>Regulation Crypto Asset Transactions and Regulation Crypto Asset Markets</em> &mdash; but the idea is simple: the SEC decides how crypto gets <em>sold</em>, and the CFTC is now sketching how leveraged crypto gets <em>traded</em>.</p>
+
+            <h2>The Delivery Test</h2>
+
+            <p>The notice&rsquo;s sharpest edge is a single distinction: when has a crypto asset actually been <em>delivered</em>?</p>
+
+            <p>The CFTC&rsquo;s preliminary view is blunt. If your customer paid in full but their coins exist only as a book-entry on your platform&rsquo;s internal ledger, that is not delivery &mdash; the transaction stays under CFTC jurisdiction, with the full weight of futures-market regulation behind it. If the trade settles onchain and the asset lands in the buyer&rsquo;s own wallet &mdash; possession and control &mdash; that counts. After genuine delivery, the CFTC keeps only its anti-fraud and anti-manipulation authority and steps back.</p>
+
+            <p>Read that twice if you run anything with leverage, margin, or financing. The line the Commission is drawing runs straight through exchange architecture: onchain settlement to user wallets on one side, platform book-entries on the other.</p>
+
+            <p>The notice also previews a purpose-built registration lane &mdash; a &ldquo;Commission-registered crypto asset market&rdquo; &mdash; for venues that deal in these transactions. Voluntary, not mandatory; only Congress could make it mandatory. And it is the earliest possible stage: an advance notice, no rule text, just questions. Comments are open until December 14.</p>
+
+            <h2>The Deadline Stack</h2>
+
+            <p>Zoom out and the week looks like a calendar, not a crisis. Four federal comment windows are now open at once:</p>
+
+            <ul>
+                <li><strong>October 20</strong> &mdash; SEC&rsquo;s Regulation Crypto Assets (the fundraising-exemption proposal, including whether Canadian issuers get in)</li>
+                <li><strong>November 30</strong> &mdash; Treasury&rsquo;s GENIUS Act rule on state stablecoin certifications (effective on paper, but not accepting filings until paperwork approval lands)</li>
+                <li><strong>December 7</strong> &mdash; SEC&rsquo;s crypto custody framework for advisers and funds</li>
+                <li><strong>December 14</strong> &mdash; the new CFTC notice</li>
+            </ul>
+
+            <p>Nothing is final. Nothing requires restructuring this week. What it requires is calendaring &mdash; and, for the October 20 deadline, deciding within days whether you have something to say.</p>
+
+            <h2>Meanwhile, Stocks Go Onchain &mdash; and Push Back</h2>
+
+            <p>While the regulators wrote notices, the market moved. Securitize put 12 U.S. equities on Solana last week as 1:1 share-backed entitlements &mdash; real dividends, real voting rights passed through, settling in USDC. At the same time, four issuers (Cerebras, AppLovin, Applied Digital, Rocket Lab) formally objected to having their shares tokenized on the planned OKX&times;ICE venue, using the objection right the SEC&rsquo;s exemption gives them. The mechanism the rules promised is working exactly as designed &mdash; in both directions.</p>
+
+            <p>Tokenized equities have crossed from filings to live product. The question for builders is no longer whether this happens, but on whose terms.</p>
+        </div>
+
+        <div class="disclaimer-box">
+            <p>This article accompanies the Weekly Regulatory Brief (pilot issue #1), where every claim is verified against the primary source. Nothing here is legal advice &mdash; check the Federal Register documents cited in the brief before acting on any deadline.</p>
+        </div>
+
+        <div class="article-nav">
+            <a href="articles.html" class="cta-button">Back to Archive</a>
+            <a href="index.html" class="cta-button">Storefront</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-contact">
+            <a href="mailto:sales@archerchainanalytics.com" class="footer-email">SALES@ARCHERCHAINANALYTICS.COM</a>
+        </div>
+        <div class="footer-meta">SOVEREIGNTY // INTEGRITY // INEXORABILIS &copy; 2026 ALL RIGHTS RESERVED</div>
+    </div>
+</body>
+</html>
