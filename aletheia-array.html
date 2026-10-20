@@ -69,21 +69,11 @@
     </div>
 
     <div class="ticker-wrap">
-        <div class="ticker">
-            <div class="ticker-item"><span class="symbol">BTC</span><span class="price">$65,994</span><span class="change up">▲ 0.45%</span></div>
-            <div class="ticker-item"><span class="symbol">ETH</span><span class="price">$1,777</span><span class="change up">▲ 3.35%</span></div>
-            <div class="ticker-item"><span class="symbol">SOL</span><span class="price">$73.45</span><span class="change up">▲ 3.27%</span></div>
-            <div class="ticker-item"><span class="symbol">XRP</span><span class="price">$1.22</span><span class="change up">▲ 3.16%</span></div>
-            <div class="ticker-item"><span class="symbol">BNB</span><span class="price">$613.79</span><span class="change down">▼ 0.39%</span></div>
-            <div class="ticker-item"><span class="symbol">ADA</span><span class="price">$0.177</span><span class="change down">▼ 1.98%</span></div>
-            <div class="ticker-item"><span class="symbol">AVAX</span><span class="price">$6.81</span><span class="change up">▲ 0.87%</span></div>
-            <div class="ticker-item"><span class="symbol">DOT</span><span class="price">$1.01</span><span class="change up">▲ 0.58%</span></div>
-            <div class="ticker-item"><span class="symbol">LINK</span><span class="price">$8.23</span><span class="change up">▲ 0.60%</span></div>
-            <div class="ticker-item"><span class="symbol">UNI</span><span class="price">$2.81</span><span class="change up">▲ 8.65%</span></div>
-            <div class="ticker-item"><span class="symbol">AAVE</span><span class="price">$73.27</span><span class="change up">▲ 6.64%</span></div>
-            <div class="ticker-item"><span class="symbol">XMR</span><span class="price">$350.62</span><span class="change up">▲ 2.99%</span></div>
+        <div class="ticker" id="price-ticker">
+            <div class="ticker-item"><span class="symbol">LOADING</span><span class="price">—</span></div>
         </div>
     </div>
+
 
     <div class="nav-container">
         <a href="index.html" class="nav-item">Home</a>
@@ -104,7 +94,7 @@
                 <div class="grid-section-title">Core Specifications</div>
             </div>
             <div class="grid-section-content">
-                <p>Alētheia Array™ is a distributed listener network spanning 1,396 verified blockchain mainnets. Real-time transaction ingestion, cryptographic verification, and append-only forensic ledger storage. 201,234 templated legal documents generated on-demand across 19 languages (19 documents × 19 languages × 1,396 engines). Primary competitive moat: World Language Matrix for multilingual compliance.</p>
+                <p>Alētheia Array™ is a multi-chain listener system covering 1,396 verified blockchain mainnets. Real-time transaction ingestion, cryptographic verification, and append-only forensic ledger storage. A 19-document legal suite is delivered at point of sale in 19 languages. Primary competitive moat: World Language Matrix for multilingual compliance.</p>
             </div>
         </div>
 
@@ -117,7 +107,7 @@
                 <div class="feature-grid">
                     <div class="feature-card">
                         <div class="feature-card-title">1,396-Mainnet Coverage</div>
-                        <div class="feature-card-desc">Monitor all confirmed blockchain networks simultaneously with institutional SLAs.</div>
+                        <div class="feature-card-desc">Monitor all verified blockchain mainnets from one package catalogue.</div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card-title">Real-Time Ingestion</div>
@@ -129,7 +119,7 @@
                     </div>
                     <div class="feature-card">
                         <div class="feature-card-title">Compliance Suite</div>
-                        <div class="feature-card-desc">201,234 legal templates (GDPR, MiCA, LGPD, PDPL, PIPA, PIPEDA, Loi 25, DIFC, ADGM + 11 more).</div>
+                        <div class="feature-card-desc">Legal templates (GDPR, MiCA, LGPD, PDPL, PIPA, PIPEDA, Loi 25, DIFC, ADGM + 11 more).</div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card-title">19-Language Support</div>
@@ -178,5 +168,6 @@
         </div>
         <div class="footer-meta">SOVEREIGNTY // INTEGRITY // INEXORABILIS © 2026 ALL RIGHTS RESERVED</div>
     </div>
+    <script src="ticker.js" defer></script>
 </body>
 </html>

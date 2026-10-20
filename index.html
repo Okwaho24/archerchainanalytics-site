@@ -316,12 +316,12 @@
 
     <div class="brand-section">
         <h1 class="brand-title">Archer Chain Analytics</h1>
-        <p class="brand-subtitle">Powering a 1,396-mainnet blockchain mesh</p>
+        <p class="brand-subtitle">1,396 mainnet listener packages</p>
     </div>
 
     <div class="hero-statement">
         <p class="hero-text">
-            Sovereign blockchain infrastructure, built and operated by Archer Chain Analytics. The Al&emacr;theia Array&trade; &mdash; <strong>1,396 blockchain listeners</strong> &mdash; is available for enterprise deployment now. Listener deployments from a few thousand dollars. When the infrastructure sells, everything else follows.
+            Sovereign blockchain infrastructure software by Archer Chain Analytics. The Al&emacr;theia Array&trade; &mdash; <strong>1,396 blockchain listeners</strong> &mdash; is available by inquiry. Listener deployments from a few thousand dollars. When the infrastructure sells, everything else follows.
         </p>
         <a href="#products" class="cta-button">View Products</a>
     </div>
@@ -331,12 +331,12 @@
         <div class="grid-section featured">
             <div class="grid-section-header">
                 <div class="grid-section-marker">●</div>
-                <div class="grid-section-title">Flagship // For Sale Now</div>
+                <div class="grid-section-title">Flagship // By Inquiry</div>
             </div>
             <div class="grid-section-content">
                 <div class="article-title">Al&emacr;theia Array&trade; Listeners</div>
                 <div class="article-meta">1,396-Mainnet Blockchain Listener Network</div>
-                <p>Deploy your own sovereign blockchain listeners on the mesh Archer Chain Analytics powers. Enterprise-grade, zero-trust, institutional SLAs. Listener deployments from a few thousand dollars.</p>
+                <p>Deploy your own sovereign blockchain listeners. Signed, hash-chained records and multi-node block cross-checking. You supply your own node endpoints. Listener deployments from a few thousand dollars.</p>
                 <a href="mailto:sales@archerchainanalytics.com?subject=Al%C4%93theia%20Array%20Listener%20Inquiry" class="cta-button">Inquire to Buy</a>
             </div>
         </div>
@@ -408,7 +408,7 @@
             </div>
             <div class="grid-section-content">
                 <p>Financial truth for working families. Money is a tool &mdash; not something to be spent frivolously, and not something to be lied about. Everything published here is checked against the source document before it reaches you. If a claim can&rsquo;t show its receipts, it doesn&rsquo;t ship.</p>
-                <p>Archer Chain Analytics builds sovereign blockchain infrastructure &mdash; a 1,396-mainnet listener network, forensic watermarking, and the sales rail everything runs on. The publication is the other half: the knowledge, free, every week.</p>
+                <p>Archer Chain Analytics builds sovereign blockchain infrastructure &mdash; a 1,396-mainnet listener package catalogue, forensic watermarking, and the sales rail everything runs on. The publication is the other half: the knowledge, free, every week.</p>
             </div>
         </div>
 
@@ -421,55 +421,7 @@
         <div class="footer-meta">SOVEREIGNTY // INTEGRITY // INEXORABILIS &copy; 2026 ALL RIGHTS RESERVED</div>
     </div>
 
-    <script>
-    (function() {
-        var coins = [
-            {id:'bitcoin', sym:'BTC'}, {id:'ethereum', sym:'ETH'},
-            {id:'solana', sym:'SOL'}, {id:'ripple', sym:'XRP'},
-            {id:'binancecoin', sym:'BNB'}, {id:'cardano', sym:'ADA'},
-            {id:'avalanche-2', sym:'AVAX'}, {id:'polkadot', sym:'DOT'},
-            {id:'chainlink', sym:'LINK'}, {id:'uniswap', sym:'UNI'},
-            {id:'aave', sym:'AAVE'}, {id:'monero', sym:'XMR'},
-            {id:'zcash', sym:'ZEC'}, {id:'bitcoin-cash', sym:'BCH'},
-            {id:'dogecoin', sym:'DOGE'}, {id:'tron', sym:'TRX'},
-            {id:'toncoin', sym:'TON'}, {id:'near', sym:'NEAR'},
-            {id:'arbitrum', sym:'ARB'}, {id:'optimism', sym:'OP'},
-            {id:'polygon', sym:'POL'}, {id:'cosmos', sym:'ATOM'},
-            {id:'litecoin', sym:'LTC'}, {id:'stellar', sym:'XLM'}
-        ];
-        function fmt(p) {
-            if (p >= 1000) return '$' + p.toLocaleString('en-US', {maximumFractionDigits: 0});
-            if (p >= 10) return '$' + p.toFixed(2);
-            return '$' + p.toFixed(3);
-        }
-        function render(data) {
-            var html = '';
-            coins.forEach(function(c) {
-                var d = data[c.id];
-                if (!d) return;
-                var chg = d.usd_24h_change || 0;
-                var cls = chg >= 0 ? 'up' : 'down';
-                var arrow = chg >= 0 ? '▲' : '▼';
-                html += '<div class="ticker-item"><span class="symbol">' + c.sym + '</span>' +
-                        '<span class="price">' + fmt(d.usd) + '</span>' +
-                        '<span class="change ' + cls + '">' + arrow + ' ' + Math.abs(chg).toFixed(2) + '%</span></div>';
-            });
-            if (html) {
-                document.getElementById('price-ticker').innerHTML = html + html;
-            }
-        }
-        var ids = coins.map(function(c){return c.id;}).join(',');
-        fetch('https://api.coingecko.com/api/v3/simple/price?ids=' + ids + '&vs_currencies=usd&include_24h_change=true')
-            .then(function(r){ return r.json(); })
-            .then(render)
-            .catch(function(){
-                document.getElementById('price-ticker').innerHTML =
-                    '<div class="ticker-item"><span class="symbol">BTC</span><span class="price">$65,994</span></div>' +
-                    '<div class="ticker-item"><span class="symbol">ETH</span><span class="price">$1,777</span></div>' +
-                    '<div class="ticker-item"><span class="symbol">SOL</span><span class="price">$73.45</span></div>';
-            });
-    })();
-    </script>
+    <script src="ticker.js" defer></script>
 
 </body>
 </html>
