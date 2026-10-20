@@ -16,6 +16,7 @@
     ['CHZ','chiliz'],['ZIL','zilliqa'],['EOS','eos'],['XLM','stellar']
   ];
   var KEY = 'aca_ticker_v1', FRESH_MS = 300000;
+  var SPEED = 60; // scroll speed in pixels per second (raise to go faster)
   var box = document.getElementById('price-ticker');
   if (!box) return;
   var wrap = box.parentNode;
@@ -48,6 +49,11 @@
     items.forEach(function (n) { box.appendChild(n); });
     items.forEach(function (n) { box.appendChild(n.cloneNode(true)); });
     wrap.style.display = '';
+    box.style.width = 'max-content';
+    requestAnimationFrame(function () {
+      // One loop = one full copy of the items, so the restart is seamless at any screen width.
+      box.style.animationDuration = Math.max(10, (box.scrollWidth / 2) / SPEED) + 's';
+    });
     return true;
   }
   function read() { try { return JSON.parse(localStorage.getItem(KEY)); } catch (e) { return null; } }
