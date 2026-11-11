@@ -36,3 +36,7 @@
 .prod-link { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-primary, #cfd6dd); text-decoration: none; border: 1px solid var(--accent-primary, #dcae3f); padding: 6px 12px; }
 .prod-link:hover { color: var(--bg-primary, #060606); background: var(--accent-primary, #dcae3f); }
 @media (max-width: 720px) { .prod-row { flex-direction: column; align-items: flex-start; } }
+/* product screenshots */
+figure.shot { margin: 0; }
+img.shot { display: block; width: 100%; height: auto; border: 1px solid var(--border, #2b2b30); }
+figure.shot figcaption { margin-top: 10px; font-size: 0.75rem; letter-spacing: 0.5px; color: var(--accent-secondary, #7e8f9f); }
