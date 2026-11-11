@@ -55,6 +55,7 @@
         .footer-meta { color: var(--accent-secondary); font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
         @media (max-width: 768px) { .page-title { font-size: 1.8rem; } }
     </style>
+    <link rel="stylesheet" href="nav.css">
 </head>
 <body>
     <div class="meta-header">
@@ -63,12 +64,41 @@
         <div>GST/HST 754975035RT0001</div>
     </div>
 
-    <div class="nav-container">
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="articles.html" class="nav-item active">Articles</a>
-        <a class="nav-item">Products <span>▾</span></a>
-        <a class="nav-item">Services <span>▾</span></a>
-        <a class="nav-item">Alētheia™ Array <span>▾</span></a>
+    <div class="nav-container" role="navigation" aria-label="Primary">
+        <a class="nav-item" href="index.html">Home</a>
+        <div class="nav-dd">
+            <button type="button" class="nav-item nav-dd-btn" aria-haspopup="true" aria-expanded="false">Products <span>▾</span></button>
+            <div class="nav-panel" role="menu">
+            <a class="nav-panel-all" role="menuitem" href="products.html">All products &rarr;</a>
+            <div class="nav-group"><div class="nav-group-title">Infrastructure &amp; Verification</div>
+                <a role="menuitem" href="aletheia-array.html">Alētheia Array™</a>
+                <a role="menuitem" href="argos.html">Argos™</a>
+                <a role="menuitem" href="acerbe.html">AcerbE™</a>
+            </div>
+            <div class="nav-group"><div class="nav-group-title">Commerce &amp; Legal</div>
+                <a role="menuitem" href="rapax.html">RaPaX™</a>
+                <a role="menuitem" href="lexforge.html">LexForge™</a>
+                <a role="menuitem" href="formdepot.html">FormDepot™</a>
+                <a role="menuitem" href="archer-revenue-finder.html">Archer Revenue Finder™</a>
+            </div>
+            <div class="nav-group"><div class="nav-group-title">Trading &amp; Recovery</div>
+                <a role="menuitem" href="inxs.html">INxS™</a>
+                <a role="menuitem" href="salvagebot.html">SalvageBotX™</a>
+            </div>
+            <div class="nav-group"><div class="nav-group-title">Creator Tools</div>
+                <a role="menuitem" href="sounddrop.html">SoundDrop™</a>
+                <a role="menuitem" href="creatorOS.html">CreatorOS™</a>
+                <a role="menuitem" href="yourtube.html">YourTube™</a>
+                <a role="menuitem" href="fabricat.html">FabriCatHD™</a>
+            </div>
+            <div class="nav-group"><div class="nav-group-title">Knowledge</div>
+                <a role="menuitem" href="crypto-hall.html">Crypto Hall of Alexandria™</a>
+                <a role="menuitem" href="toolkit.html">US Expansion Toolkit</a>
+            </div>
+        </div>
+        </div>
+        <a class="nav-item active" href="articles.html">Archive</a>
+        <a class="nav-item" href="mailto:sales@archerchainanalytics.com">Contact</a>
     </div>
 
     <div class="page-header">
@@ -129,5 +159,6 @@
         </div>
         <div class="footer-meta">SOVEREIGNTY // INTEGRITY // INEXORABILIS &copy; 2026 ALL RIGHTS RESERVED</div>
     </div>
+    <script src="nav.js" defer></script>
 </body>
 </html>
