@@ -5,7 +5,9 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(python3 *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(sed -n '108,120p' index.html)",
+      "Bash(sed -n '198,210p' index.html)"
     ]
   }
 }

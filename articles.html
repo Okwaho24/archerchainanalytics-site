@@ -18,7 +18,7 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { height: 100%; }
-        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: 'Courier New', 'Fira Code', monospace; line-height: 1.6; font-size: 0.9rem; letter-spacing: 0.5px; }
+        body { background-color: var(--bg-primary); color: var(--text-primary); font-family: var(--font-mono); line-height: 1.6; font-size: 0.9rem; letter-spacing: 0.5px; }
         .meta-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 24px; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); font-size: 0.7rem; letter-spacing: 1px; color: var(--accent-secondary); background-color: var(--bg-secondary); }
         .meta-header .center-title { color: var(--text-primary); font-weight: 600; letter-spacing: 2px; }
         .nav-container { display: flex; justify-content: center; gap: 48px; padding: 18px 0; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
@@ -40,7 +40,7 @@
         .entry-date { color: var(--accent-secondary); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
         .entry-title { color: var(--text-primary); font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
         .entry-excerpt { color: var(--text-primary); font-size: 0.85rem; line-height: 1.7; margin-bottom: 20px; }
-        .cta-button { display: inline-flex; align-items: center; gap: 10px; background-color: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--accent-primary); padding: 12px 24px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s ease; font-family: 'Courier New', 'Fira Code', monospace; font-weight: 600; }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background-color: var(--bg-secondary); color: var(--text-primary); border: 1px solid var(--accent-primary); padding: 12px 24px; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s ease; font-family: var(--font-mono); font-weight: 600; }
         .cta-button::before { content: '▸'; color: var(--accent-primary); font-size: 0.6rem; }
         .cta-button:hover { background-color: var(--accent-primary); color: var(--bg-primary); border-color: var(--accent-primary); }
         .archive-note { margin-top: 40px; padding: 24px; border: 1px dashed rgba(36, 47, 62, var(--border-opacity)); text-align: center; color: var(--accent-secondary); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
