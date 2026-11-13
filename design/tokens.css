@@ -1,0 +1,63 @@
+:root {
+  --onyx-950: #0A0A0A;
+  --onyx-900: #121212;
+  --onyx-800: #1A1A1A;
+  --onyx-700: #262626;
+  --platinum-100: #E5E4E2;
+  --platinum-400: #A8A8A6;
+  --platinum-600: #6E6E6C;
+  --gold-500: #C9A84C;
+  --gold-300: #E0C77A;
+  --white: #FFFFFF;
+
+  --bg: var(--onyx-950);
+  --surface: var(--onyx-900);
+  --surface-raised: var(--onyx-800);
+  --border: rgba(229, 228, 226, 0.12);
+  --text: var(--platinum-100);
+  --text-muted: var(--platinum-400);
+  --accent: var(--gold-500);
+  --accent-hover: var(--gold-300);
+
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Fira Code", "Courier New", ui-monospace, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: 3.5rem;
+  --tracking-body: -0.01em;
+  --tracking-head: 0.08em;
+  --lh-body: 1.6;
+  --lh-head: 1.15;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+
+  --radius: 2px;
+  --border-width: 1px;
+  --container: 1200px;
+  --measure: 60ch;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur: 160ms;
+}
+
+.theme-report {
+  --bg: var(--white);
+  --surface: #F6F6F5;
+  --surface-raised: var(--white);
+  --border: rgba(10, 10, 10, 0.14);
+  --text: var(--onyx-950);
+  --text-muted: var(--platinum-600);
+}
+
+html { background: var(--bg); color: var(--text); font-family: var(--font-sans); letter-spacing: var(--tracking-body); line-height: var(--lh-body); }
