@@ -9,6 +9,8 @@
   --gold-500: #C9A84C;
   --gold-300: #E0C77A;
   --white: #FFFFFF;
+  --danger: #F87171;
+  --success: #4ADE80;
 
   --bg: var(--onyx-950);
   --surface: var(--onyx-900);

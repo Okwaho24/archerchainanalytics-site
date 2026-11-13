@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Hall of Alexandria™ | Zero-Trust Cryptocurrency Library — Archer Chain Analytics</title>
+    <link rel="stylesheet" href="design/tokens.css">
     <style>
         :root {
-            --bg-primary: #0A0A0A;
-            --bg-secondary: #121212;
-            --accent-primary: #C9A84C;
-            --accent-secondary: #A8A8A6;
-            --text-primary: #E5E4E2;
-            --highlight: #E0C77A;
-            --border: #262626;
+            --bg-primary: var(--onyx-950);
+            --bg-secondary: var(--onyx-900);
+            --accent-primary: var(--gold-500);
+            --accent-secondary: var(--platinum-400);
+            --text-primary: var(--platinum-100);
+            --highlight: var(--gold-300);
+            --border: var(--onyx-700);
             --border-opacity: 0.5;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,8 +27,8 @@
         .ticker-item .symbol { color: var(--highlight); font-weight: 600; margin-right: 8px; }
         .ticker-item .price { color: var(--text-primary); margin: 0 6px; }
         .ticker-item .change { font-weight: 500; }
-        .ticker-item .change.up { color: #4ade80; }
-        .ticker-item .change.down { color: #f87171; }
+        .ticker-item .change.up { color: var(--success); }
+        .ticker-item .change.down { color: var(--danger); }
         @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
         .nav-container { display: flex; justify-content: center; gap: 48px; padding: 18px 0; border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; }
         .nav-item { color: var(--text-primary); text-decoration: none; cursor: pointer; transition: color 0.2s ease; position: relative; display: flex; align-items: center; gap: 6px; }
