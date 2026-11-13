@@ -55,6 +55,15 @@
         .footer-email:hover { color: var(--highlight); }
         .footer-meta { color: var(--accent-secondary); font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
         @media (max-width: 768px) { .page-title { font-size: 1.8rem; } }
+        .ticker-wrap { width: 100%; overflow: hidden; background-color: var(--bg-secondary); border-bottom: 1px solid rgba(36, 47, 62, var(--border-opacity)); padding: 14px 0; }
+        .ticker { display: flex; white-space: nowrap; animation: marquee 50s linear infinite; }
+        .ticker-item { display: inline-block; padding: 0 18px; font-size: 0.8rem; letter-spacing: 0.5px; }
+        .ticker-item .symbol { color: var(--highlight); font-weight: 600; margin-right: 8px; }
+        .ticker-item .price { color: var(--text-primary); margin: 0 6px; }
+        .ticker-item .change { font-weight: 500; }
+        .ticker-item .change.up { color: var(--success); }
+        .ticker-item .change.down { color: var(--danger); }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
 </head>
 <body>
@@ -64,12 +73,17 @@
         <div>GST/HST 754975035RT0001</div>
     </div>
 
+    <div class="ticker-wrap">
+        <div class="ticker" id="price-ticker">
+            <div class="ticker-item"><span class="symbol">LOADING</span><span class="price">—</span></div>
+        </div>
+    </div>
+
     <div class="nav-container">
-        <a href="index.html" class="nav-item">Home</a>
-        <a href="articles.html" class="nav-item active">Articles</a>
-        <a class="nav-item">Products <span>▾</span></a>
-        <a class="nav-item">Services <span>▾</span></a>
-        <a class="nav-item">Alētheia™ Array <span>▾</span></a>
+        <a href="index.html" class="nav-item">HOME</a>
+        <a href="index.html#products" class="nav-item">PRODUCTS</a>
+        <a href="index.html" class="nav-item">SERVICES</a>
+        <a href="aletheia-array.html" class="nav-item">ALĒTHEIA ARRAY</a>
     </div>
 
     <div class="page-header">
@@ -130,5 +144,6 @@
         </div>
         <div class="footer-meta">SOVEREIGNTY // INTEGRITY // INEXORABILIS &copy; 2026 ALL RIGHTS RESERVED</div>
     </div>
+    <script src="ticker.js" defer></script>
 </body>
 </html>
