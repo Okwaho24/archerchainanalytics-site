@@ -1,0 +1,22 @@
+{
+  "name": "archerchainanalytics-site-deploy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ticker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Okwaho24/archerchainanalytics-site.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Okwaho24/archerchainanalytics-site/issues"
+  },
+  "homepage": "https://github.com/Okwaho24/archerchainanalytics-site#readme",
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}
